@@ -21,11 +21,11 @@ jobs:
 
   deploy:    
     needs: build
-    runs-on: aws-ec2
+    runs-on: self-hosted
     steps:  
       - name: Pull image from docker Hub
-        run: docker pull integrationninjas/reactjs-app:latest
+        run: docker pull sasrin/reactjs-app:latest
       - name: Docker old Container 
         run: docker rm -f reactContainer
       - name: Run docker Container
-        run: docker run -d -p 3000:80 --name reactContainer integrationninjas/reactjs-app
+        run: docker run -d -p 3000:80 --name reactContainer sasrin/reactjs-app:latest
